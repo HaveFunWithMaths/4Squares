@@ -7,18 +7,8 @@ export default function App() {
   const [current, setCurrent] = useState(0);
   const total = slides.length;
 
-  const goNext = useCallback(() => setCurrent(c => (c + 1) % total), [total]);
-  const goPrev = useCallback(() => setCurrent(c => (c - 1 + total) % total), [total]);
-
-  // Auto-advance slideshow timer
-  useEffect(() => {
-    const currentSlide = slides[current];
-    const duration = currentSlide?.duration || 4500;
-    const timer = setTimeout(() => {
-      goNext();
-    }, duration);
-    return () => clearTimeout(timer);
-  }, [current, goNext]);
+  const goNext = useCallback(() => setCurrent(c => Math.min(c + 1, total - 1)), [total]);
+  const goPrev = useCallback(() => setCurrent(c => Math.max(c - 1, 0)), [total]);
 
   useEffect(() => {
     const handler = (e) => {
@@ -54,13 +44,13 @@ export default function App() {
 
       {/* Slide content area */}
       <div className="slide-area">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.div
             key={current}
-            initial={{ opacity: 0, clipPath: 'inset(0% 100% 0% 0%)' }}
-            animate={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }}
-            exit={{ opacity: 0, clipPath: 'inset(0% 0% 0% 100%)' }}
-            transition={{ duration: 0.38, ease: [0.76, 0, 0.24, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
           >
             <SlideRenderer
