@@ -156,7 +156,7 @@ function TitleLayout({ slide }) {
           textShadow: '0 0 14px #bf00ff88',
         }}
       >
-        A  ·  G E O M E T R Y  ·  P U Z Z L E
+        A  ·  F U N  ·  P U Z Z L E
       </motion.p>
 
       {/* Divider */}
@@ -569,7 +569,7 @@ function QuoteLayout({ slide }) {
       position: 'relative', overflow: 'hidden',
     }}>
       <Particles count={25} colors={['#ffec00', '#00f5ff', '#bf00ff']} />
-      
+
       {/* Quotation mark icon */}
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
