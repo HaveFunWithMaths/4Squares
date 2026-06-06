@@ -23,7 +23,7 @@ export const slides = [
     id: 4, variant: 'diagram', diagram: 1,
     font1: 'Q1',
     font2: 'Divide the black area in square A into two equal pieces.',
-    font3: 'Here is the answer!',
+    font3: 'Here is the answer!!!',
     duration: 4500,
   },
 
@@ -50,7 +50,7 @@ export const slides = [
     id: 7, variant: 'diagram', diagram: 2,
     font1: 'Q2',
     font2: 'Divide the black area in square B into three equal pieces.',
-    font3: 'Here is the answer!',
+    font3: 'Here is the answer!!!',
     duration: 4500,
   },
 
@@ -137,7 +137,7 @@ export const slides = [
     id: 18, variant: 'diagram', diagram: 4,
     font1: 'Q4',
     font2: 'Divide the black area in square D into seven equal pieces.',
-    font3: 'Here is the answer',
+    font3: 'Here is the answer!!',
     duration: 5500,
   },
 
@@ -159,6 +159,15 @@ export const slides = [
     duration: 5500,
   },
 
-  // Slide 21: Thank you
-  { id: 21, variant: 'thankyou', title: 'Have a Nice Day', duration: 6000 },
+  // Slide 21: Leonardo da Vinci quote
+  {
+    id: 21,
+    variant: 'quote',
+    quote: 'Simplicity is the ultimate sophistication.',
+    author: 'Leonardo da Vinci',
+    duration: 6000,
+  },
+
+  // Slide 22: Thank you
+  { id: 22, variant: 'thankyou', title: 'Have a Nice Day', duration: 6000 },
 ];

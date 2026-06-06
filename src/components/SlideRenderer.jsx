@@ -205,6 +205,18 @@ const lineIn = (delay) => ({
   transition: { delay, duration: 0.4 },
 });
 
+const yellowTextIn = (delay) => ({
+  initial: { opacity: 0, y: 15, scale: 0.95 },
+  animate: { opacity: 1, y: 0, scale: 1 },
+  transition: {
+    delay,
+    duration: 0.6,
+    type: 'spring',
+    stiffness: 140,
+    damping: 14
+  },
+});
+
 // ── LAYOUT: DIAGRAM (most slides) ─────────────────────────────────────
 function DiagramLayout({ slide }) {
   const { font1, font2, font3, diagram } = slide;
@@ -315,16 +327,17 @@ function DiagramLayout({ slide }) {
               boxShadow: '0 0 6px rgba(255,236,0,0.4)',
               transformOrigin: 'left',
             }} className="text-divider" />
-            <motion.div {...textIn(0.57)}>
+            <motion.div {...yellowTextIn(0.57)}>
               <p style={{
                 fontFamily: 'Share Tech Mono, monospace',
-                fontSize: 'clamp(0.9rem, 1.6vw, 1.2rem)',
+                fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)',
+                fontWeight: 700,
                 color: '#ffec00',
-                textShadow: '0 0 10px rgba(255,236,0,0.5)',
-                lineHeight: 1.55,
-                letterSpacing: '0.04em',
+                textShadow: '0 0 12px rgba(255,236,0,0.7), 0 0 24px rgba(255,236,0,0.35)',
+                lineHeight: 1.45,
+                letterSpacing: '0.06em',
                 margin: 0,
-                animation: 'neonPulseYellow 3s ease-in-out infinite',
+                animation: 'neonPulseYellow 2s ease-in-out infinite',
               }}>{font3}</p>
             </motion.div>
           </>
@@ -545,12 +558,97 @@ function ThankYouLayout({ slide }) {
   );
 }
 
+// ── LAYOUT: QUOTE ──────────────────────────────────────────────────────
+function QuoteLayout({ slide }) {
+  return (
+    <div style={{
+      width: '100%', height: '100%',
+      display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center',
+      textAlign: 'center', padding: '40px',
+      position: 'relative', overflow: 'hidden',
+    }}>
+      <Particles count={25} colors={['#ffec00', '#00f5ff', '#bf00ff']} />
+      
+      {/* Quotation mark icon */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 0.15, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          fontFamily: 'Orbitron, sans-serif',
+          fontSize: 'clamp(5rem, 12vw, 10rem)',
+          fontWeight: 900,
+          color: '#00f5ff',
+          lineHeight: 0.8,
+          marginBottom: -20,
+          userSelect: 'none',
+        }}
+      >
+        “
+      </motion.div>
+
+      {/* Quote text */}
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        style={{
+          fontFamily: 'Rajdhani, sans-serif',
+          fontSize: 'clamp(1.8rem, 4.5vw, 3.8rem)',
+          fontWeight: 700,
+          color: '#e8e8ff',
+          textShadow: '0 0 20px rgba(0, 245, 255, 0.3)',
+          lineHeight: 1.25,
+          maxWidth: 900,
+          margin: '0 0 24px',
+          letterSpacing: '0.02em',
+        }}
+      >
+        {slide.quote}
+      </motion.h2>
+
+      {/* Divider line */}
+      <motion.div
+        initial={{ width: 0 }}
+        animate={{ width: 'min(200px, 40vw)' }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+        style={{
+          height: 1,
+          background: 'linear-gradient(90deg, transparent, #ff006e, transparent)',
+          boxShadow: '0 0 8px #ff006e',
+          marginBottom: 24,
+        }}
+      />
+
+      {/* Author */}
+      <motion.p
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 0.8, y: 0 }}
+        transition={{ delay: 1.0, duration: 0.6 }}
+        style={{
+          fontFamily: 'Share Tech Mono, monospace',
+          fontSize: 'clamp(1rem, 2vw, 1.4rem)',
+          color: '#ff006e',
+          textShadow: '0 0 10px rgba(255, 0, 110, 0.4)',
+          letterSpacing: '0.15em',
+          margin: 0,
+          textTransform: 'uppercase',
+        }}
+      >
+        — {slide.author}
+      </motion.p>
+    </div>
+  );
+}
+
 // ── Main export ────────────────────────────────────────────────────────
 export default function SlideRenderer({ slide, slideIndex, onNext }) {
   switch (slide.variant) {
     case 'title': return <TitleLayout slide={slide} />;
     case 'diagram': return <DiagramLayout slide={slide} />;
     case 'text': return <TextLayout slide={slide} slideIndex={slideIndex} />;
+    case 'quote': return <QuoteLayout slide={slide} />;
     case 'thankyou': return <ThankYouLayout slide={slide} onNext={onNext} />;
     default: return null;
   }
