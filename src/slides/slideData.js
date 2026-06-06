@@ -41,7 +41,7 @@ export const slides = [
     id: 6, variant: 'diagram', diagram: 1,
     font1: 'Q2',
     font2: 'Divide the black area in square B into three equal pieces.',
-    font3: 'Come on it is not soo difficult!',
+    font3: 'Come on, it\'s not that difficult!',
     duration: 5500,
   },
 
@@ -71,7 +71,7 @@ export const slides = [
     id: 10, variant: 'diagram', diagram: 2,
     font1: 'Q3',
     font2: 'Divide the black area in square C into four equal pieces.',
-    font3: 'Very Difficult?? Thats right!!',
+    font3: 'Very Difficult? That\'s right!!',
     duration: 5500,
   },
 
@@ -119,7 +119,7 @@ export const slides = [
     id: 16, variant: 'diagram', diagram: 3,
     font1: 'Q4',
     font2: 'Divide the black area in square D into seven equal pieces.',
-    font3: 'World Record is 7 Second!!',
+    font3: 'World Record is 7 Seconds!!',
     duration: 6000,
   },
 
@@ -128,7 +128,7 @@ export const slides = [
     id: 17, variant: 'diagram', diagram: 3,
     font1: 'Q4',
     font2: 'Divide the black area in square D into seven equal pieces.',
-    font3: 'Any Idea',
+    font3: 'Any idea?',
     duration: 6000,
   },
 

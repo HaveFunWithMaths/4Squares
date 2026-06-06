@@ -1,12 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { useMemo } from 'react';
-import Diagram0 from './diagrams/Diagram0';
-import Diagram1 from './diagrams/Diagram1';
-import Diagram2 from './diagrams/Diagram2';
-import Diagram3 from './diagrams/Diagram3';
-import Diagram4 from './diagrams/Diagram4';
-
-const DiagramComponents = [Diagram0, Diagram1, Diagram2, Diagram3, Diagram4];
+import DiagramSVG from './DiagramSVG';
 
 // ── Floating particles (title + thank-you) ─────────────────────────────
 function Particles({ count = 35, colors = ['#00f5ff', '#ff006e', '#bf00ff'] }) {
@@ -177,7 +171,6 @@ const yellowTextIn = (delay) => ({
 // ── LAYOUT: DIAGRAM (most slides) ─────────────────────────────────────
 function DiagramLayout({ slide }) {
   const { font1, font2, font3, diagram } = slide;
-  const DiagramComp = DiagramComponents[diagram];
   const isQLabel = /^Q\d$/.test((font1 || '').trim());
 
   return (
@@ -208,7 +201,7 @@ function DiagramLayout({ slide }) {
           animate={{ top: ['0%', '100%'] }}
           transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
         />
-        <DiagramComp />
+        <DiagramSVG diagram={diagram} />
       </motion.div>
 
       {/* ── RIGHT: Text panel ── */}

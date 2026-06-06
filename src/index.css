@@ -475,3 +475,144 @@ html, body, #root {
   }
 }
 
+/* ── Floating Controls Container ── */
+.controls-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  gap: 12px;
+  z-index: 10000;
+}
+
+.control-btn {
+  width: 38px;
+  height: 38px;
+  background: rgba(10, 10, 15, 0.75);
+  border: 1px solid rgba(0, 245, 255, 0.35);
+  color: var(--cyber-primary);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.control-btn:hover {
+  background: rgba(0, 245, 255, 0.18);
+  border-color: var(--cyber-primary);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.control-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* ── Help / Shortcuts Modal Overlay ── */
+.help-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 8, 15, 0.82);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+}
+
+.help-modal {
+  background: rgba(13, 17, 23, 0.98);
+  border: 2px solid var(--cyber-primary);
+  box-shadow: var(--glow-cyan), inset 0 0 24px rgba(0, 245, 255, 0.1);
+  padding: 32px 28px;
+  width: min(420px, 92vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+}
+
+.help-title {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  color: var(--cyber-primary);
+  margin-bottom: 24px;
+  letter-spacing: 3px;
+  text-shadow: var(--glow-cyan);
+  text-align: center;
+}
+
+.help-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
+.help-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 245, 255, 0.12);
+  padding-bottom: 8px;
+}
+
+.help-key {
+  font-family: var(--font-mono);
+  color: var(--cyber-accent);
+  text-shadow: var(--glow-pink);
+  font-weight: bold;
+  background: rgba(255, 0, 110, 0.12);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 0, 110, 0.25);
+  font-size: 0.9rem;
+}
+
+.help-desc {
+  font-family: var(--font-main);
+  color: var(--cyber-white);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.help-close-btn {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--cyber-primary);
+  background: transparent;
+  border: 1px solid var(--cyber-primary);
+  padding: 8px 28px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+}
+
+.help-close-btn:hover {
+  background: rgba(0, 245, 255, 0.18);
+  box-shadow: var(--glow-cyan);
+}
+
+/* ── Controls Responsive Adjustment ── */
+@media (max-width: 768px) or (orientation: portrait) {
+  .controls-container {
+    top: 12px;
+    right: 12px;
+    gap: 8px;
+  }
+  
+  .control-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+}
+
