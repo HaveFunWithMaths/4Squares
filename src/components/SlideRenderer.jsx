@@ -20,7 +20,7 @@ function Particles({ count = 35, colors = ['#00f5ff', '#ff006e', '#bf00ff'] }) {
       delay: Math.random() * 3,
       color: colors[Math.floor(Math.random() * colors.length)],
     })),
-  [count, colors]);
+    [count, colors]);
 
   return (
     <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
@@ -52,7 +52,7 @@ function NeonRain() {
       h: Math.random() * 80 + 30,
       color: ['#00f5ff44', '#ff006e44', '#ffec0044', '#bf00ff44'][i % 4],
     })),
-  []);
+    []);
 
   return (
     <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
@@ -114,7 +114,7 @@ function TitleLayout({ slide }) {
           textShadow: '0 0 10px #ff006e88',
         }}
       >
-        ▸ CYBERPUNK PRESENTATION ▸
+        ▸ CRITICAL THINKING ▸
       </motion.p>
 
       {/* Main title */}
@@ -212,13 +212,7 @@ function DiagramLayout({ slide }) {
   const isQLabel = /^Q\d$/.test((font1 || '').trim());
 
   return (
-    <div style={{
-      width: '100%', height: '100%',
-      display: 'flex', alignItems: 'center',
-      padding: 'clamp(20px, 4vh, 48px) clamp(24px, 5vw, 64px)',
-      gap: 'clamp(20px, 3vw, 40px)',
-      boxSizing: 'border-box',
-    }}>
+    <div className="diagram-layout">
       {/* ── LEFT: Diagram panel ── */}
       <motion.div
         {...{
@@ -226,20 +220,10 @@ function DiagramLayout({ slide }) {
           animate: { opacity: 1, x: 0 },
           transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
         }}
-        style={{
-          flex: '0 0 44%',
-          height: 'min(76vh, 560px)',
-          background: 'rgba(2, 6, 18, 0.95)',
-          border: '1px solid rgba(0,245,255,0.35)',
-          boxShadow: '0 0 30px rgba(0,245,255,0.1), 0 0 80px rgba(0,245,255,0.04), inset 0 0 40px rgba(0,245,255,0.03)',
-          padding: 'clamp(16px, 2.5vh, 28px)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          clipPath: 'polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px))',
-          position: 'relative',
-        }}
+        className="diagram-panel"
       >
         {/* Corner dots */}
-        {[{top:8,right:8},{bottom:8,left:8}].map((pos, i) => (
+        {[{ top: 8, right: 8 }, { bottom: 8, left: 8 }].map((pos, i) => (
           <div key={i} style={{
             position: 'absolute', ...pos,
             width: 5, height: 5, borderRadius: '50%',
@@ -259,19 +243,12 @@ function DiagramLayout({ slide }) {
       </motion.div>
 
       {/* ── RIGHT: Text panel ── */}
-      <div style={{
-        flex: 1,
-        display: 'flex', flexDirection: 'column',
-        justifyContent: 'center',
-        gap: 'clamp(12px, 2vh, 22px)',
-        padding: '0 8px',
-        minWidth: 0,
-      }}>
+      <div className="text-panel">
         {/* Font1 */}
         {font1 && (
           <motion.div {...textIn(0.15)}>
             {isQLabel ? (
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }} className="q-label-container">
                 <span style={{
                   fontFamily: 'Orbitron, sans-serif',
                   fontSize: 'clamp(0.55rem, 1vw, 0.75rem)',
@@ -308,7 +285,7 @@ function DiagramLayout({ slide }) {
           background: 'linear-gradient(90deg, #ff006e, rgba(255,0,110,0.1))',
           boxShadow: '0 0 8px rgba(255,0,110,0.5)',
           transformOrigin: 'left',
-        }} />
+        }} className="text-divider" />
 
         {/* Font2 */}
         {font2 && (
@@ -337,7 +314,7 @@ function DiagramLayout({ slide }) {
               background: 'linear-gradient(90deg, #ffec00, rgba(255,236,0,0.08))',
               boxShadow: '0 0 6px rgba(255,236,0,0.4)',
               transformOrigin: 'left',
-            }} />
+            }} className="text-divider" />
             <motion.div {...textIn(0.57)}>
               <p style={{
                 fontFamily: 'Share Tech Mono, monospace',
@@ -359,8 +336,8 @@ function DiagramLayout({ slide }) {
 
 // ── LAYOUT: TEXT-ONLY (slides 9, 15) ──────────────────────────────────
 function TextLayout({ slide, slideIndex }) {
-  const isOK     = slideIndex === 8;   // Slide 9 "OK!!"
-  const isReady  = slideIndex === 14;  // Slide 15 "Be ready..."
+  const isOK = slideIndex === 8;   // Slide 9 "OK!!"
+  const isReady = slideIndex === 14;  // Slide 15 "Be ready..."
 
   return (
     <div style={{
@@ -571,10 +548,10 @@ function ThankYouLayout({ slide }) {
 // ── Main export ────────────────────────────────────────────────────────
 export default function SlideRenderer({ slide, slideIndex, onNext }) {
   switch (slide.variant) {
-    case 'title':    return <TitleLayout slide={slide} />;
-    case 'diagram':  return <DiagramLayout slide={slide} />;
-    case 'text':     return <TextLayout slide={slide} slideIndex={slideIndex} />;
+    case 'title': return <TitleLayout slide={slide} />;
+    case 'diagram': return <DiagramLayout slide={slide} />;
+    case 'text': return <TextLayout slide={slide} slideIndex={slideIndex} />;
     case 'thankyou': return <ThankYouLayout slide={slide} onNext={onNext} />;
-    default:         return null;
+    default: return null;
   }
 }

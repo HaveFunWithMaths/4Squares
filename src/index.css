@@ -109,14 +109,16 @@ html, body, #root {
 /* ── Slide Counter ── */
 .slide-counter {
   position: fixed;
-  bottom: 12px;
-  right: 24px;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   color: var(--cyber-primary);
-  opacity: 0.6;
+  opacity: 0.75;
   z-index: 9995;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  text-shadow: var(--glow-cyan);
 }
 
 /* ── Nav Buttons ── */
@@ -274,5 +276,104 @@ html, body, #root {
   position: absolute;
   inset: 0;
   z-index: 1;
+}
+
+/* ── Diagram Layout ── */
+.diagram-layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: clamp(20px, 4vh, 48px) clamp(24px, 5vw, 64px);
+  gap: clamp(20px, 3vw, 40px);
+  box-sizing: border-box;
+}
+
+.diagram-panel {
+  flex: 0 0 44%;
+  height: min(76vh, 560px);
+  background: rgba(2, 6, 18, 0.95);
+  border: 1px solid rgba(0,245,255,0.35);
+  box-shadow: 0 0 30px rgba(0,245,255,0.1), 0 0 80px rgba(0,245,255,0.04), inset 0 0 40px rgba(0,245,255,0.03);
+  padding: clamp(16px, 2.5vh, 28px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+  position: relative;
+}
+
+.text-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(12px, 2vh, 22px);
+  padding: 0 8px;
+  min-width: 0;
+}
+
+.q-label-container {
+  justify-content: flex-start;
+}
+
+/* ── Mobile & Portrait Adjustments ── */
+@media (max-width: 768px) or (orientation: portrait) {
+  .diagram-layout {
+    flex-direction: column;
+    padding: clamp(12px, 2.5vh, 20px) clamp(16px, 4vw, 24px);
+    gap: clamp(12px, 2vh, 20px);
+    justify-content: center;
+    overflow-y: auto;
+  }
+
+  .diagram-panel {
+    flex: 0 0 auto;
+    width: min(85vw, 360px);
+    height: min(85vw, 360px);
+    max-height: 40vh;
+    padding: 12px;
+  }
+
+  .text-panel {
+    flex: 0 0 auto;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+    padding: 0;
+    gap: 8px;
+  }
+
+  .text-divider {
+    transform-origin: center !important;
+    background: linear-gradient(90deg, transparent, #ff006e, transparent) !important;
+    width: 80%;
+    margin: 4px auto;
+  }
+
+  .q-label-container {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+  .nav-btn.prev { left: 8px; }
+  .nav-btn.next { right: 8px; }
+
+  /* Adjust corner decorators to be less intrusive on mobile */
+  .corner-decorator {
+    width: 24px;
+    height: 24px;
+  }
+  .corner-decorator.tl { top: 8px; left: 8px; }
+  .corner-decorator.tr { top: 8px; right: 8px; }
+  .corner-decorator.bl { bottom: 8px; left: 8px; }
+  .corner-decorator.br { bottom: 8px; right: 8px; }
 }
 

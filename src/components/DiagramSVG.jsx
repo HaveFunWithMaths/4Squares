@@ -33,10 +33,10 @@ export default function DiagramSVG({ showQ1 = false, showQ2 = false, showQ3 = fa
 
   return (
     <svg
-      viewBox={`0 0 ${S} ${S}`}
+      viewBox={`-40 -40 580 580`}
       width="100%"
       height="100%"
-      style={{ display: 'block', filter: 'drop-shadow(0 0 12px rgba(0,245,255,0.22))' }}
+      style={{ display: 'block', overflow: 'visible', filter: 'drop-shadow(0 0 12px rgba(0,245,255,0.22))' }}
     >
       <defs>
         <filter id="aGlow" filterUnits="userSpaceOnUse" x="-20" y="-20" width={S+40} height={S+40}>
@@ -54,7 +54,7 @@ export default function DiagramSVG({ showQ1 = false, showQ2 = false, showQ3 = fa
       </defs>
 
       {/* ── Background ── */}
-      <rect x={0} y={0} width={S} height={S} fill={BG} />
+      <rect x={-40} y={-40} width={580} height={580} fill={BG} />
 
       {/* ── Gray shaded cells ── */}
       <rect x={q}   y={q}   width={q} height={q} fill="url(#grayGrad)" />
@@ -84,13 +84,13 @@ export default function DiagramSVG({ showQ1 = false, showQ2 = false, showQ3 = fa
       <line x1={q}   y1={3*q} x2={2*q} y2={3*q} stroke={CYAN_DIM} strokeWidth={INNER_W} />
 
       {/* ── Quadrant labels ── */}
-      <text x={S-28} y={28}   textAnchor="middle" dominantBaseline="middle"
+      <text x={S-20} y={-22}   textAnchor="middle" dominantBaseline="middle"
         fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">A</text>
-      <text x={28}   y={28}   textAnchor="middle" dominantBaseline="middle"
+      <text x={20}   y={-22}   textAnchor="middle" dominantBaseline="middle"
         fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">B</text>
-      <text x={28}   y={S-28} textAnchor="middle" dominantBaseline="middle"
+      <text x={20}   y={S+22} textAnchor="middle" dominantBaseline="middle"
         fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">C</text>
-      <text x={S-28} y={S-28} textAnchor="middle" dominantBaseline="middle"
+      <text x={S-20} y={S+22} textAnchor="middle" dominantBaseline="middle"
         fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">D</text>
 
       {/* ══════════════════════════════════════════════════════ */}
@@ -118,17 +118,17 @@ export default function DiagramSVG({ showQ1 = false, showQ2 = false, showQ3 = fa
       {showQ3 && (
         <>
           {/* Horizontal lines */}
-          <line x1={0} y1={2*q + hq} x2={q} y2={2*q + hq}
+          <line x1={hq} y1={2*q + hq} x2={q} y2={2*q + hq}
             stroke={PINK} strokeWidth={ANS_W} filter="url(#aGlow)" strokeLinecap="round" />
           <line x1={0} y1={3*q} x2={hq} y2={3*q}
             stroke={PINK} strokeWidth={ANS_W} filter="url(#aGlow)" strokeLinecap="round" />
-          <line x1={0} y1={3*q + hq} x2={2*q} y2={3*q + hq}
+          <line x1={hq} y1={3*q + hq} x2={q + hq} y2={3*q + hq}
             stroke={PINK} strokeWidth={ANS_W} filter="url(#aGlow)" strokeLinecap="round" />
 
           {/* Vertical lines */}
-          <line x1={hq} y1={H} x2={hq} y2={S}
+          <line x1={hq} y1={2*q + hq} x2={hq} y2={3*q + hq}
             stroke={PINK} strokeWidth={ANS_W} filter="url(#aGlow)" strokeLinecap="round" />
-          <line x1={q + hq} y1={3*q} x2={q + hq} y2={S}
+          <line x1={q + hq} y1={3*q} x2={q + hq} y2={3*q + hq}
             stroke={PINK} strokeWidth={ANS_W} filter="url(#aGlow)" strokeLinecap="round" />
           <line x1={q} y1={3*q + hq} x2={q} y2={S}
             stroke={PINK} strokeWidth={ANS_W} filter="url(#aGlow)" strokeLinecap="round" />

@@ -7,8 +7,18 @@ export default function App() {
   const [current, setCurrent] = useState(0);
   const total = slides.length;
 
-  const goNext = useCallback(() => setCurrent(c => Math.min(c + 1, total - 1)), [total]);
-  const goPrev = useCallback(() => setCurrent(c => Math.max(c - 1, 0)), []);
+  const goNext = useCallback(() => setCurrent(c => (c + 1) % total), [total]);
+  const goPrev = useCallback(() => setCurrent(c => (c - 1 + total) % total), [total]);
+
+  // Auto-advance slideshow timer
+  useEffect(() => {
+    const currentSlide = slides[current];
+    const duration = currentSlide?.duration || 4500;
+    const timer = setTimeout(() => {
+      goNext();
+    }, duration);
+    return () => clearTimeout(timer);
+  }, [current, goNext]);
 
   useEffect(() => {
     const handler = (e) => {
@@ -80,13 +90,11 @@ export default function App() {
       <button
         className="nav-btn prev"
         onClick={(e) => { e.stopPropagation(); goPrev(); }}
-        disabled={current === 0}
         aria-label="Previous slide"
       >◀</button>
       <button
         className="nav-btn next"
         onClick={(e) => { e.stopPropagation(); goNext(); }}
-        disabled={current === total - 1}
         aria-label="Next slide"
       >▶</button>
     </div>
