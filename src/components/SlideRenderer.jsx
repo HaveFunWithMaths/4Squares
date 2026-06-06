@@ -90,13 +90,7 @@ function ScanLine() {
 // ── LAYOUT: TITLE (Slide 1) ────────────────────────────────────────────
 function TitleLayout({ slide }) {
   return (
-    <div style={{
-      width: '100%', height: '100%',
-      display: 'flex', flexDirection: 'column',
-      alignItems: 'center', justifyContent: 'center',
-      position: 'relative', overflow: 'hidden',
-      textAlign: 'center',
-    }}>
+    <div className="title-layout">
       <Particles count={45} />
       <ScanLine />
 
@@ -105,14 +99,7 @@ function TitleLayout({ slide }) {
         initial={{ opacity: 0, letterSpacing: '1em' }}
         animate={{ opacity: 0.55, letterSpacing: '0.5em' }}
         transition={{ duration: 1, delay: 0.2 }}
-        style={{
-          fontFamily: 'Share Tech Mono, monospace',
-          fontSize: 'clamp(0.6rem, 1.5vw, 0.9rem)',
-          color: '#ff006e',
-          textTransform: 'uppercase',
-          marginBottom: 24,
-          textShadow: '0 0 10px #ff006e88',
-        }}
+        className="title-top-label"
       >
         ▸ CRITICAL THINKING ▸
       </motion.p>
@@ -124,18 +111,8 @@ function TitleLayout({ slide }) {
         transition={{ duration: 0.9, delay: 0.4, type: 'spring', stiffness: 80 }}
       >
         <h1
-          className="glitch-text crt-flicker"
+          className="glitch-text crt-flicker title-main"
           data-text={slide.title}
-          style={{
-            fontFamily: 'Orbitron, sans-serif',
-            fontSize: 'clamp(4.5rem, 14vw, 11rem)',
-            fontWeight: 900,
-            color: '#00f5ff',
-            textShadow: '0 0 20px #00f5ff, 0 0 50px #00f5ff44, 0 0 100px #00f5ff22',
-            letterSpacing: '0.12em',
-            lineHeight: 1,
-            margin: 0,
-          }}
         >
           {slide.title}
         </h1>
@@ -146,15 +123,7 @@ function TitleLayout({ slide }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 0.65, y: 0 }}
         transition={{ delay: 0.9, duration: 0.6 }}
-        style={{
-          fontFamily: 'Rajdhani, sans-serif',
-          fontSize: 'clamp(1rem, 2.5vw, 1.6rem)',
-          fontWeight: 500,
-          color: '#bf00ff',
-          letterSpacing: '0.25em',
-          marginTop: 22,
-          textShadow: '0 0 14px #bf00ff88',
-        }}
+        className="title-subtitle"
       >
         A  ·  F U N  ·  P U Z Z L E
       </motion.p>
@@ -164,27 +133,15 @@ function TitleLayout({ slide }) {
         initial={{ width: 0 }}
         animate={{ width: 'min(400px, 60vw)' }}
         transition={{ delay: 1.2, duration: 0.8 }}
-        style={{
-          height: 1,
-          background: 'linear-gradient(90deg, transparent, #00f5ff, #ff006e, transparent)',
-          boxShadow: '0 0 12px rgba(0,245,255,0.5)',
-          marginTop: 32,
-        }}
+        className="title-divider"
       />
 
       {/* Blink prompt */}
       <motion.p
         initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 0.7, 0] }}
-        transition={{ delay: 1.8, duration: 2, repeat: Infinity }}
-        style={{
-          position: 'absolute', bottom: 70,
-          fontFamily: 'Share Tech Mono, monospace',
-          fontSize: 'clamp(0.6rem, 1.3vw, 0.8rem)',
-          color: '#00f5ff',
-          letterSpacing: '0.25em',
-          textShadow: '0 0 8px #00f5ff',
-        }}
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ delay: 1.8, duration: 2.2, repeat: Infinity }}
+        className="title-prompt"
       >
         [ CLICK OR PRESS → TO BEGIN ]
       </motion.p>

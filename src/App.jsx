@@ -77,27 +77,13 @@ export default function App() {
 
       {/* Slide content area */}
       <div className="slide-area" style={{ overflow: 'hidden', position: 'relative', width: '100%', height: '100%' }}>
-        <AnimatePresence initial={false} custom={direction}>
-          <motion.div
-            key={current}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              x: { type: 'spring', stiffness: 220, damping: 28 },
-              opacity: { duration: 0.2 }
-            }}
-            style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, overflow: 'hidden' }}
-          >
-            <SlideRenderer
-              slide={slides[current]}
-              slideIndex={current}
-              onNext={goNext}
-            />
-          </motion.div>
-        </AnimatePresence>
+        <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, overflow: 'hidden' }}>
+          <SlideRenderer
+            slide={slides[current]}
+            slideIndex={current}
+            onNext={goNext}
+          />
+        </div>
       </div>
 
       {/* Progress bar */}

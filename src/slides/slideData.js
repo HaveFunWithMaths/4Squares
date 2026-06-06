@@ -123,51 +123,69 @@ export const slides = [
     duration: 6000,
   },
 
-  // Slide 17: Diagram3 — Q4 wait
+  // Slide 17: Diagram3 — Q4 prompt
   {
     id: 17, variant: 'diagram', diagram: 3,
+    font1: 'Q4',
+    font2: 'Divide the black area in square D into seven equal pieces.',
+    font3: 'Any Idea',
+    duration: 6000,
+  },
+
+  // Slide 18: Diagram3 — Q4 wait
+  {
+    id: 18, variant: 'diagram', diagram: 3,
     font1: 'Q4',
     font2: 'Divide the black area in square D into seven equal pieces.',
     font3: 'Take your time, I can wait!!',
     duration: 5000,
   },
 
-  // Slide 18: Diagram4 — Q4 answer
+  // Slide 19: Diagram4 — Q4 answer
   {
-    id: 18, variant: 'diagram', diagram: 4,
+    id: 19, variant: 'diagram', diagram: 4,
     font1: 'Q4',
     font2: 'Divide the black area in square D into seven equal pieces.',
     font3: 'Here is the answer!!',
     duration: 5500,
   },
 
-  // Slide 19: Diagram4 — Q4 reflection
+  // Slide 20: Diagram4 — Q4 reflection
   {
-    id: 19, variant: 'diagram', diagram: 4,
+    id: 20, variant: 'diagram', diagram: 4,
+    font1: 'Q4',
+    font2: 'Divide the black area in square D into seven equal pieces.',
+    font3: 'Not what you expected?',
+    duration: 4500,
+  },
+
+  // Slide 21: Diagram4 — Q4 reflection
+  {
+    id: 21, variant: 'diagram', diagram: 4,
     font1: 'Q4',
     font2: 'Divide the black area in square D into seven equal pieces.',
     font3: 'Was it really that difficult?',
     duration: 4500,
   },
 
-  // Slide 20: Diagram4 — Q4 insight
+  // Slide 22: Diagram4 — Q4 insight
   {
-    id: 20, variant: 'diagram', diagram: 4,
+    id: 22, variant: 'diagram', diagram: 4,
     font1: 'Q4',
     font2: 'Divide the black area in square D into seven equal pieces.',
     font3: 'It was just that Our Mind can be conditioned! 😂',
     duration: 5500,
   },
 
-  // Slide 21: Leonardo da Vinci quote
+  // Slide 23: Leonardo da Vinci quote
   {
-    id: 21,
+    id: 23,
     variant: 'quote',
     quote: 'Simplicity is the ultimate sophistication.',
     author: 'Leonardo da Vinci',
     duration: 6000,
   },
 
-  // Slide 22: Thank you
-  { id: 22, variant: 'thankyou', title: 'Have a Nice Day', duration: 6000 },
+  // Slide 24: Thank you
+  { id: 24, variant: 'thankyou', title: 'Have a Nice Day', duration: 6000 },
 ];

@@ -65,34 +65,6 @@ export default function DiagramSVG({ showQ1 = false, showQ2 = false, showQ3 = fa
       <rect x={2*q} y={q}   width={q} height={q} fill="rgba(0,245,255,0.05)" />
       <rect x={q}   y={2*q} width={q} height={q} fill="rgba(0,245,255,0.05)" />
 
-      {/* ── Outer border ── */}
-      <rect x={1} y={1} width={S-2} height={S-2}
-        fill="none" stroke={CYAN} strokeWidth={STROKE_W} filter="url(#cGlow)" />
-
-      {/* ── Main midlines (cross) ── */}
-      <line x1={H} y1={0} x2={H} y2={S} stroke={CYAN} strokeWidth={STROKE_W} />
-      <line x1={0} y1={H} x2={S} y2={H} stroke={CYAN} strokeWidth={STROKE_W} />
-
-      {/* ── Gray cell inner borders ── */}
-      {/* Left edge of gray band: x=q, from y=q to y=3q */}
-      <line x1={q}   y1={q}   x2={q}   y2={3*q} stroke={CYAN_DIM} strokeWidth={INNER_W} />
-      {/* Right edge of top-right gray cell: x=3q, from y=q to y=2q */}
-      <line x1={3*q} y1={q}   x2={3*q} y2={2*q} stroke={CYAN_DIM} strokeWidth={INNER_W} />
-      {/* Top edge of gray band: y=q, from x=q to x=3q */}
-      <line x1={q}   y1={q}   x2={3*q} y2={q}   stroke={CYAN_DIM} strokeWidth={INNER_W} />
-      {/* Bottom edge of C's gray cell: y=3q, from x=q to x=2q */}
-      <line x1={q}   y1={3*q} x2={2*q} y2={3*q} stroke={CYAN_DIM} strokeWidth={INNER_W} />
-
-      {/* ── Quadrant labels ── */}
-      <text x={S-20} y={-22}   textAnchor="middle" dominantBaseline="middle"
-        fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">A</text>
-      <text x={20}   y={-22}   textAnchor="middle" dominantBaseline="middle"
-        fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">B</text>
-      <text x={20}   y={S+22} textAnchor="middle" dominantBaseline="middle"
-        fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">C</text>
-      <text x={S-20} y={S+22} textAnchor="middle" dominantBaseline="middle"
-        fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">D</text>
-
       {/* ══════════════════════════════════════════════════════ */}
       {/* Q1 ANSWER: Diagonal in A (top-right quadrant)        */}
       {/* Line from top-right corner (500,0) → (375,125)       */}
@@ -141,6 +113,34 @@ export default function DiagramSVG({ showQ1 = false, showQ2 = false, showQ3 = fa
         <line key={i} x1={H} y1={y} x2={S} y2={y}
           stroke={PINK} strokeWidth={ANS_W} filter="url(#aGlow)" strokeLinecap="round" />
       ))}
+
+      {/* ── Outer border ── */}
+      <rect x={1} y={1} width={S-2} height={S-2}
+        fill="none" stroke={CYAN} strokeWidth={STROKE_W} filter="url(#cGlow)" />
+
+      {/* ── Main midlines (cross) ── */}
+      <line x1={H} y1={0} x2={H} y2={S} stroke={CYAN} strokeWidth={STROKE_W} />
+      <line x1={0} y1={H} x2={S} y2={H} stroke={CYAN} strokeWidth={STROKE_W} />
+
+      {/* ── Gray cell inner borders ── */}
+      {/* Left edge of gray band: x=q, from y=q to y=3q */}
+      <line x1={q}   y1={q}   x2={q}   y2={3*q} stroke={CYAN_DIM} strokeWidth={INNER_W} />
+      {/* Right edge of top-right gray cell: x=3q, from y=q to y=2q */}
+      <line x1={3*q} y1={q}   x2={3*q} y2={2*q} stroke={CYAN_DIM} strokeWidth={INNER_W} />
+      {/* Top edge of gray band: y=q, from x=q to x=3q */}
+      <line x1={q}   y1={q}   x2={3*q} y2={q}   stroke={CYAN_DIM} strokeWidth={INNER_W} />
+      {/* Bottom edge of C's gray cell: y=3q, from x=q to x=2q */}
+      <line x1={q}   y1={3*q} x2={2*q} y2={3*q} stroke={CYAN_DIM} strokeWidth={INNER_W} />
+
+      {/* ── Quadrant labels ── */}
+      <text x={S-20} y={-22}   textAnchor="middle" dominantBaseline="middle"
+        fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">A</text>
+      <text x={20}   y={-22}   textAnchor="middle" dominantBaseline="middle"
+        fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">B</text>
+      <text x={20}   y={S+22} textAnchor="middle" dominantBaseline="middle"
+        fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">C</text>
+      <text x={S-20} y={S+22} textAnchor="middle" dominantBaseline="middle"
+        fill="rgba(0,245,255,0.32)" fontFamily="Orbitron,sans-serif" fontSize="19" fontWeight="900">D</text>
     </svg>
   );
 }
